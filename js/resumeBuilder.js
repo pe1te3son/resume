@@ -30,14 +30,16 @@ var work = {
       "title" : "Warehouse operative",
       "location" : "London",
       "dates" : "in porgress :(",
-      "description" : "Printing company"
+      "description" : "Printing company",
+      "url" : "http://www.augustusmartin.com/"
     },
     {
       "employer" : "Joka",
       "title" : "Builder",
       "location" : "Prague",
       "dates" : "7 years ago",
-      "description" : "Building company"
+      "description" : "Building company",
+      "url" : "http://www.kapicak.sk/"
     }
   ]
 };
@@ -59,18 +61,21 @@ var education = {
       "title" : "Front end Web-developer",
       "school" : "Udacity",
       "date" : "2016 (in progress)",
+      "urlCourse" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001",
       "url" : "https://www.udacity.com/"
     },
     {
       "title" : "Front end Web-developer",
       "school" : "Treehouse",
       "date" : "2015",
+      "urlCourse" : "https://teamtreehouse.com/",
       "url" : "https://teamtreehouse.com/"
     },
     {
       "title" : "Php, Wordpress Developer",
       "school" : "Treehouse",
       "date" : "2015 - (in progress)",
+      "urlCourse" : "https://teamtreehouse.com/",
       "url" : "https://teamtreehouse.com/"
     }
   ]
@@ -118,44 +123,53 @@ bio['display'] = function(){
 //work display function
 work['display'] = function(){
   if(work.jobs.length > 0){
-    $('#workExperience').append(HTMLworkStart);
-    $('#workExperience').append(function(){
+    for(var job in work.jobs){
+      $('#workExperience').append(HTMLworkStart);
+      $('.work-entry:last').append(function(){
         var htmlToReturn = "";
-        //constructs job unit
-        for(var job in work.jobs){
-          htmlToReturn += HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
-          htmlToReturn += HTMLworkTitle.replace('%data%', work.jobs[job].title);
-          htmlToReturn += HTMLworkDates.replace('%data%', work.jobs[job].dates);
-          htmlToReturn += HTMLworkLocation.replace('%data%', work.jobs[job].location);
-          htmlToReturn += HTMLworkDescription.replace('%data%', work.jobs[job].description);
-        }//for loop ends
-
+        htmlToReturn += HTMLworkEmployer.replace('#', work.jobs[job].url).replace('%data%', work.jobs[job].employer);
+        htmlToReturn += HTMLworkTitle.replace('%data%', work.jobs[job].title);
+        htmlToReturn += HTMLworkDates.replace('%data%', work.jobs[job].dates);
+        htmlToReturn += HTMLworkLocation.replace('%data%', work.jobs[job].location);
+        htmlToReturn += HTMLworkDescription.replace('%data%', work.jobs[job].description);
         return htmlToReturn;
-      }//append function ends
-    );
+      });
+    }//for loop ends
   }//if statment ends
 };
 
 //education display function
 education["display"] = function(){
   if(education.schools.length > 0){
-    $('#education').append(HTMLschoolStart);
-    $('#education').append(function(){
-      var htmlToReturn = "";
-      //constructs school unit
-      for(var school in education.schools){
-        htmlToReturn += HTMLschoolName.replace('%data%', education.schools[school].name);
+    //constructs education unit for schools
+    for(var school in education.schools){
+      $('#education').append(HTMLschoolStart);
+      $('.education-entry:last').append(function(){
+        var htmlToReturn = "";
+        htmlToReturn += HTMLschoolName.replace('#', education.schools[school].url).replace('%data%', education.schools[school].name);
         htmlToReturn += HTMLschoolDegree.replace('%data%', education.schools[school].degree);
         htmlToReturn += HTMLschoolDates.replace('%data%', education.schools[school].dates);
         htmlToReturn += HTMLschoolLocation.replace('%data%', education.schools[school].location);
         htmlToReturn += HTMLschoolMajor.replace('%data%', education.schools[school].majors);
-      }//for loop ends
-      return htmlToReturn;
-    });
-
+        return htmlToReturn;
+      });
+    }//for loop ends
   }//if ends
-  if(education.onlineCourses.length > 0){
 
+  if(education.onlineCourses.length > 0){
+    //constructs education unit for online courses
+    $('#education').append(HTMLonlineClasses);
+    for(var course in education.onlineCourses){
+      $('#education').append(HTMLschoolStart);
+      $('.education-entry:last').append(function(){
+        var htmlToReturn = "";
+        htmlToReturn += HTMLonlineTitle.replace('#', education.onlineCourses[course].urlCourse).replace('%data%', education.onlineCourses[course].title);
+        htmlToReturn += HTMLonlineSchool.replace('%data%', education.onlineCourses[course].school);
+        htmlToReturn += HTMLonlineDates.replace('%data%', education.onlineCourses[course].date);
+        htmlToReturn += HTMLonlineURL.replace('#', education.onlineCourses[course].url).replace('%data%', education.onlineCourses[course].school);
+        return htmlToReturn;
+      });
+    }//for loop ends
   }//if ends
 };
 ///////////////
