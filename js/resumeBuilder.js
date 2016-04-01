@@ -81,6 +81,18 @@ var education = {
   ]
 };
 
+//projects
+var projects = {
+  "projects" : [
+    {
+      "title" : "Portfolio",
+      "dates" : "2016",
+      "description" : "Simple portfolio website with slider.",
+      "images" : ["images/portfolio_website.jpg"],
+      "url" : "https://github.com/pe1te3son/porfolio_website"
+    }
+  ]
+};
 
 ///////////////
 //// Display functions
@@ -127,7 +139,7 @@ work['display'] = function(){
       $('#workExperience').append(HTMLworkStart);
       $('.work-entry:last').append(function(){
         var htmlToReturn = "";
-        htmlToReturn += HTMLworkEmployer.replace('#', work.jobs[job].url).replace('%data%', work.jobs[job].employer);
+        htmlToReturn += HTMLworkEmployer.replace('%#%', work.jobs[job].url).replace('%data%', work.jobs[job].employer);
         htmlToReturn += HTMLworkTitle.replace('%data%', work.jobs[job].title);
         htmlToReturn += HTMLworkDates.replace('%data%', work.jobs[job].dates);
         htmlToReturn += HTMLworkLocation.replace('%data%', work.jobs[job].location);
@@ -146,7 +158,7 @@ education["display"] = function(){
       $('#education').append(HTMLschoolStart);
       $('.education-entry:last').append(function(){
         var htmlToReturn = "";
-        htmlToReturn += HTMLschoolName.replace('#', education.schools[school].url).replace('%data%', education.schools[school].name);
+        htmlToReturn += HTMLschoolName.replace('%#%', education.schools[school].url).replace('%data%', education.schools[school].name);
         htmlToReturn += HTMLschoolDegree.replace('%data%', education.schools[school].degree);
         htmlToReturn += HTMLschoolDates.replace('%data%', education.schools[school].dates);
         htmlToReturn += HTMLschoolLocation.replace('%data%', education.schools[school].location);
@@ -163,18 +175,51 @@ education["display"] = function(){
       $('#education').append(HTMLschoolStart);
       $('.education-entry:last').append(function(){
         var htmlToReturn = "";
-        htmlToReturn += HTMLonlineTitle.replace('#', education.onlineCourses[course].urlCourse).replace('%data%', education.onlineCourses[course].title);
+        htmlToReturn += HTMLonlineTitle.replace('%#%', education.onlineCourses[course].urlCourse).replace('%data%', education.onlineCourses[course].title);
         htmlToReturn += HTMLonlineSchool.replace('%data%', education.onlineCourses[course].school);
         htmlToReturn += HTMLonlineDates.replace('%data%', education.onlineCourses[course].date);
-        htmlToReturn += HTMLonlineURL.replace('#', education.onlineCourses[course].url).replace('%data%', education.onlineCourses[course].school);
+        htmlToReturn += HTMLonlineURL.replace('%#%', education.onlineCourses[course].url).replace('%data%', education.onlineCourses[course].school);
         return htmlToReturn;
       });
     }//for loop ends
   }//if ends
 };
+
+//projects display function
+projects["display"] = function(){
+
+  //Returns built html for project`s images
+  //@param: project
+  function loopImages(project){
+    if(project.length > 0){
+      var htmlToReturn = "";
+      for(var image in project){
+        htmlToReturn += HTMLprojectImage.replace('%data%', project[image]);
+      }//for loop ends
+      return htmlToReturn;
+    }//if ends
+  }//loopImages ends
+
+  if(projects.projects.length > 0){
+    for(var project in projects.projects){
+      $('#projects').append(HTMLprojectStart);
+      $('.project-entry:last').append(function(){
+        var htmlToReturn = "";
+        htmlToReturn += HTMLprojectTitle.replace('%#%', projects.projects[project].url).replace('%data%', projects.projects[project].title);
+        htmlToReturn += HTMLprojectDates.replace('%data%', projects.projects[project].dates);
+        htmlToReturn += HTMLprojectDescription.replace('%data%', projects.projects[project].description);
+        htmlToReturn += loopImages(projects.projects[project].images);
+        return htmlToReturn;
+      });
+    }//for loop ends
+  }//if ends
+};
+
 ///////////////
 //// Resume builder
 ///////////////
 bio.display();
 work.display();
+projects.display();
 education.display();
+$('#mapDiv').append(googleMap);
