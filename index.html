@@ -33,9 +33,9 @@
   Uncomment the <script> tag below when you're ready to add an interactive
   Google Map to your resume!
   -->
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport" content="width=device-width">
 </head>
 <body>
   <div id="main">
@@ -45,28 +45,81 @@
     resume below. You can pretty easily figure out what each section will
     display by looking at the id or at what's written between the <h2> tags.
     -->
-    <div id="header" class="center-content clear-fix">
-      <ul id="topContacts" class="flex-box"></ul>
+    <header class="header container">
+
+      <div class="row site-head">
+        <nav class="main-navigation">
+        </nav>
+        <div id="bio-name">
+        </div>
+      </div>
+
+    </header>
+
+    <hr class="hr container-fluid">
+    <div class="page-content container">
+      <section class="about-section container">
+
+        <div class="contact-cont row">
+          <ul id="topContacts" class="col-md-12"></ul>
+        </div>
+
+        <div class="bio-about row">
+          <div id="skills" class="col-md-6"></div>
+        </div>
+
+      </section>
+
+      <section class="work-section">
+
+        <div id="workExperience">
+          <h2>Work Experience</h2>
+        </div>
+
+      </section>
+
+      <section class="projects-section">
+
+        <div id="projects">
+          <!-- DONT FORGET TO REMOVE -->
+          <!-- DONT FORGET TO REMOVE -->
+          <style>
+          img{width: 300px;}
+          </style>
+          <!-- DONT FORGET TO REMOVE -->
+          <!-- DONT FORGET TO REMOVE -->
+          <h2>Projects</h2>
+        </div>
+
+      </section>
+
+      <section>
+        <div id="education" class="gray">
+          <h2>Education</h2>
+        </div>
+      </section>
+
+      <section>
+
+        <div id="mapDiv">
+          <h2>Where I've Lived and Worked</h2>
+        </div>
+
+      </section>
     </div>
-    <div style="clear: both;"></div>
-    <div id="workExperience" class="gray">
-      <h2>Work Experience</h2>
-    </div>
-    <div id="projects">
-      <h2>Projects</h2>
-    </div>
-    <div id="education" class="gray">
-      <h2>Education</h2>
-    </div>
-    <div id="mapDiv">
-      <h2>Where I've Lived and Worked</h2>
-    </div>
-    <div id="lets-connect" class="dark-gray">
-      <h2 class="orange center-text">Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
-      </ul>
-    </div>
-  </div>
+
+    <hr class="hr container-fluid">
+
+    <footer class="footer container">
+
+      <div id="lets-connect" class="dark-gray">
+        <h2 class="orange center-text">Let's Connect</h2>
+        <ul id="footerContacts" class="flex-box"></ul>
+      </div>
+
+    </footer>
+
+  </div>  <!--#main ends -->
 
   <!--
   The next line tells the browser where to download the JavaScript file you'll be
