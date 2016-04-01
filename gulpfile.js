@@ -8,6 +8,16 @@ var concat = require('gulp-concat');
 var autoprefixer = require('gulp-autoprefixer');
 
 /////////////////
+//// Browser sync task
+////////////////
+gulp.task('browserSync', function() {
+    browserSync({
+        server: {
+            baseDir: "."
+        }
+    });
+});
+/////////////////
 //// Style tasks
 ////////////////
 
@@ -20,7 +30,8 @@ gulp.task('sass', function () {
 		cascade: false
   }))
   .pipe(sourcemaps.write())
-  .pipe(gulp.dest('./css'));
+  .pipe(gulp.dest('./css'))
+  .pipe(browserSync.reload({stream:true}));;
 });
 
 /////////////////
@@ -34,4 +45,4 @@ gulp.task('watch', function(){
 /////////////////
 //// Default tasks
 ////////////////
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['sass', 'browserSync', 'watch']);

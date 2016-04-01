@@ -101,12 +101,10 @@ var projects = {
 //Bio display function
 bio['display'] = function(){
 
-  $('#header').prepend(
+  $('#bio-name').prepend(
       HTMLheaderName.replace('%data%', bio.name)
     , HTMLheaderRole.replace('%data%', bio.role)
   );
-
-  $('#topContacts').before(HTMLbioPic.replace('%data%', bio.biopic));
 
   $('#topContacts, #footerContacts').append(
       HTMLmobile.replace('%data%', bio.contacts['mobile'])
@@ -117,10 +115,12 @@ bio['display'] = function(){
     , HTMLblog.replace('%data%', bio.contacts['blog'])
   );
 
-  //todo put if statement here
+  $('#skills').before(HTMLbioPic.replace('%data%', bio.biopic));
+  $('#skills').prepend(HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage));
+
   if(bio.skills.length > 0){
-    $('#header').append(HTMLskillsStart);
-    $('#skills').append(function(){
+    $('#skills').append(HTMLskillsStart);
+    $('#skills-list').append(function(){
       //constructs skills html
       var htmlToReturn = "";
       for(var skill in bio.skills){
