@@ -23,10 +23,10 @@ var HTMLgithub = '<li class="list-item"><i class="fa fa-github-square"></i><a hr
 var HTMLblog = '<li class="list-item"><i class="fa fa-rss-square"></i><a href="%link%">Blog</a></li>';
 var HTMLlocation = '<li class="list-item"><i class="fa fa-map-marker"></i>%data%</li>';
 
-var HTMLbioPic = '<div class="col-md-6"><img class="img-responsive" src="%data%" class="biopic">';
-var HTMLwelcomeMsg = '<div class="welcome-message"><p>%data%</p>';
+var HTMLbioPic = '<div class="pro-img-cont col-md-4 col-sm-12"><img class="img-responsive" src="%data%" class="biopic">';
+var HTMLwelcomeMsg = '<div class="welcome-message"><h2>%data%</h2>';
 
-var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills-list" class="flex-box"></ul>';
+var HTMLskillsStart = '<h3>Skills at a Glance:</h3><ul id="skills-list"></ul>';
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';

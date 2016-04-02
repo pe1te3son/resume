@@ -22,7 +22,7 @@ var bio = {
         "blog" : "https://github.com/pe1te3son"
       },
   "welcomeMessage": "Welcome to my site",
-  "skills" : ["html", "css", "javascript"],
+  "skills" : ["html", "CSS", "JavaScript", 'Wordpress', 'PHP'],
   "biopic" : "images/profile_pic.jpg"
 };
 
@@ -113,12 +113,12 @@ bio['display'] = function(){
   );
 
   $('#topContacts, #footerContacts').append(
-      HTMLmobile.replace('%link%', bio.contacts['mobile']).replace('%data%', bio.contacts['mobile'])
-    , HTMLemail.replace('%link%', bio.contacts['email']).replace('%data%', bio.contacts['email'])
-    , HTMLlocation.replace('%data%', bio.contacts['location'])
+      HTMLemail.replace('%link%', bio.contacts['email']).replace('%data%', bio.contacts['email'])
+    , HTMLmobile.replace('%link%', bio.contacts['mobile']).replace('%data%', bio.contacts['mobile'])
     , HTMLtwitter.replace('%link%', bio.contacts.twitter['twitter_url']).replace('%data%', bio.contacts.twitter['username'])
     , HTMLgithub.replace('%link%', bio.contacts.github['github_url']).replace('%data%', bio.contacts.github['username'])
     , HTMLblog.replace('%link%', bio.contacts['blog'])
+    , HTMLlocation.replace('%data%', bio.contacts['location'])
   );
 
   $('#skills').before(HTMLbioPic.replace('%data%', bio.biopic));
