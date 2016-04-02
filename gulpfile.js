@@ -17,6 +17,7 @@ gulp.task('browserSync', function() {
         }
     });
 });
+
 /////////////////
 //// Style tasks
 ////////////////
@@ -31,7 +32,7 @@ gulp.task('sass', function () {
   }))
   .pipe(sourcemaps.write())
   .pipe(gulp.dest('./css'))
-  .pipe(browserSync.reload({stream:true}));;
+  .pipe(browserSync.reload({stream:true}));
 });
 
 /////////////////

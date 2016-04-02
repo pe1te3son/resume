@@ -10,8 +10,14 @@ var bio = {
   "contacts" : {
         "mobile" : "07475633636",
         "email" : "2010janak2010@gmail.com",
-        "github" : "https://github.com/pe1te3son",
-        "twitter" : "@peter_janak",
+        "github" : {
+          "username" : "pe1te3son",
+          "github_url" : "https://github.com/pe1te3son"
+        },
+        "twitter" : {
+          "username" : "@peter_janak",
+          "twitter_url" : "https://twitter.com/peter_janak"
+        },
         "location" : "London",
         "blog" : "https://github.com/pe1te3son"
       },
@@ -107,12 +113,12 @@ bio['display'] = function(){
   );
 
   $('#topContacts, #footerContacts').append(
-      HTMLmobile.replace('%data%', bio.contacts['mobile'])
-    , HTMLemail.replace('%data%', bio.contacts['email'])
+      HTMLmobile.replace('%link%', bio.contacts['mobile']).replace('%data%', bio.contacts['mobile'])
+    , HTMLemail.replace('%link%', bio.contacts['email']).replace('%data%', bio.contacts['email'])
     , HTMLlocation.replace('%data%', bio.contacts['location'])
-    , HTMLtwitter.replace('%data%', bio.contacts['twitter'])
-    , HTMLgithub.replace('%data%', bio.contacts['github'])
-    , HTMLblog.replace('%data%', bio.contacts['blog'])
+    , HTMLtwitter.replace('%link%', bio.contacts.twitter['twitter_url']).replace('%data%', bio.contacts.twitter['username'])
+    , HTMLgithub.replace('%link%', bio.contacts.github['github_url']).replace('%data%', bio.contacts.github['username'])
+    , HTMLblog.replace('%link%', bio.contacts['blog'])
   );
 
   $('#skills').before(HTMLbioPic.replace('%data%', bio.biopic));
