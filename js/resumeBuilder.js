@@ -93,7 +93,7 @@ var projects = {
     {
       "title" : "Portfolio",
       "dates" : "2016",
-      "description" : "Simple portfolio website with slider.",
+      "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
       "images" : ["images/portfolio_website.jpg"],
       "url" : "https://github.com/pe1te3son/porfolio_website"
     }
@@ -211,9 +211,11 @@ projects["display"] = function(){
       $('#projects').append(HTMLprojectStart);
       $('.project-entry:last').append(function(){
         var htmlToReturn = "";
+        htmlToReturn += '<div class="project-info">';
         htmlToReturn += HTMLprojectTitle.replace('%#%', projects.projects[project].url).replace('%data%', projects.projects[project].title);
         htmlToReturn += HTMLprojectDates.replace('%data%', projects.projects[project].dates);
         htmlToReturn += HTMLprojectDescription.replace('%data%', projects.projects[project].description);
+        htmlToReturn += '</div>';
         htmlToReturn += loopImages(projects.projects[project].images);
         return htmlToReturn;
       });

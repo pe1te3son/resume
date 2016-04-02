@@ -23,7 +23,7 @@ var HTMLgithub = '<li class="list-item"><i class="fa fa-github-square"></i><a hr
 var HTMLblog = '<li class="list-item"><i class="fa fa-rss-square"></i><a href="%link%">Blog</a></li>';
 var HTMLlocation = '<li class="list-item"><i class="fa fa-map-marker"></i>%data%</li>';
 
-var HTMLbioPic = '<div class="pro-img-cont col-md-4 col-sm-12"><img class="img-responsive" src="%data%" class="biopic">';
+var HTMLbioPic = '<div class="pro-img-cont col-md-4 col-sm-12"><img class="img-responsive profile-pic" src="%data%" class="biopic">';
 var HTMLwelcomeMsg = '<div class="welcome-message"><h2>%data%</h2>';
 
 var HTMLskillsStart = '<h3>Skills at a Glance:</h3><ul id="skills-list"></ul>';
@@ -37,9 +37,9 @@ var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p>%data%</p>';
 
 var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<a href="%#%">%data%</a>';
+var HTMLprojectTitle = '<h3><a href="%#%">%data%</a></h3>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
+var HTMLprojectDescription = '<p>%data%</p>';
 var HTMLprojectImage = '<div class="project-image"><img class="img-responsive" src="%data%"></div>';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
