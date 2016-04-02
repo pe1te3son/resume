@@ -34,17 +34,17 @@ var work = {
     {
       "employer" : "Augustus Martin",
       "title" : "Warehouse operative",
-      "location" : "London",
+      "location" : "London, UK",
       "dates" : "in porgress :(",
-      "description" : "Printing company",
+      "description" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.",
       "url" : "http://www.augustusmartin.com/"
     },
     {
       "employer" : "Joka",
       "title" : "Builder",
-      "location" : "Prague",
+      "location" : "Prague, CZ",
       "dates" : "7 years ago",
-      "description" : "Building company",
+      "description" : " Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
       "url" : "http://www.kapicak.sk/"
     }
   ]
@@ -148,8 +148,8 @@ work['display'] = function(){
         htmlToReturn += HTMLworkEmployer.replace('%#%', work.jobs[job].url).replace('%data%', work.jobs[job].employer);
         htmlToReturn += HTMLworkTitle.replace('%data%', work.jobs[job].title);
         htmlToReturn += HTMLworkDates.replace('%data%', work.jobs[job].dates);
-        htmlToReturn += HTMLworkLocation.replace('%data%', work.jobs[job].location);
         htmlToReturn += HTMLworkDescription.replace('%data%', work.jobs[job].description);
+        htmlToReturn += HTMLworkLocation.replace('%data%', work.jobs[job].location);
         return htmlToReturn;
       });
     }//for loop ends
