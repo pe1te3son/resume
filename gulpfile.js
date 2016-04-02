@@ -19,6 +19,15 @@ gulp.task('browserSync', function() {
 });
 
 /////////////////
+//// Html tasks
+////////////////
+
+gulp.task('html', function(){
+  gulp.src('**/*.html')
+  .pipe(browserSync.reload({stream:true}));
+});
+
+/////////////////
 //// Style tasks
 ////////////////
 
@@ -40,6 +49,7 @@ gulp.task('sass', function () {
 ////////////////
 
 gulp.task('watch', function(){
+  gulp.watch('**/*.html', ['html']);
   gulp.watch('sass/**/*', ['sass']);
 });
 

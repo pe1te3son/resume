@@ -36,11 +36,11 @@ var HTMLworkDates = '<div class="date-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p>%data%</p>';
 
-var HTMLprojectStart = '<div class="project-entry"></div>';
+var HTMLprojectStart = '<div class="project-entry col-sx-12"></div>';
 var HTMLprojectTitle = '<h3><a href="%#%">%data%</a></h3>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p>%data%</p>';
-var HTMLprojectImage = '<div class="project-image"><img class="img-responsive" src="%data%"></div>';
+var HTMLprojectImage = '<div class="project-image col-sm-6"><img class="img-responsive" src="%data%"></div>';
 
 var HTMLschoolStart = '<div class="education-entry"></div>';
 var HTMLschoolName = '<a href="%#%">%data%';

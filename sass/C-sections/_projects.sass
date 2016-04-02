@@ -1,22 +1,41 @@
 .projects-section
-  @extend %flex-entry-cont
   margin-top: 80px
-  border-top: 40px solid $color4
+  background: $color4
 
 .project-entry
-  @extend .row
-  //background: $color4
-  padding: 10px
   margin-bottom: 40px
-  flex: 1
-
-.projects-heading
-  width: 100%
-
-.project-info
-  @extend .col-sm-6
 
 .project-image
-  @extend .col-sm-6
   background: $color4
-  padding: 10px
+
+.project-header
+  background: $color4
+  padding: 20px 50px
+
+.projects-heading
+  margin: 0
+  font-size: em(25px)
+
+.projects-slider
+  text-align: center
+  font-size: em(30px)
+  >i
+    margin: 0 5px
+    color: $color2
+    &:hover
+      color: $color3
+      cursor: pointer
+
+.p-counter
+  width: 100%
+  text-align: center
+
+.p-piece
+  display: inline-block
+  +size(15px)
+  background: $color2
+  margin-right: 5px
+  text-align: center
+
+.p-piece-active
+  background-color: $color3

@@ -211,7 +211,7 @@ projects["display"] = function(){
       $('#projects').append(HTMLprojectStart);
       $('.project-entry:last').append(function(){
         var htmlToReturn = "";
-        htmlToReturn += '<div class="project-info">';
+        htmlToReturn += '<div class="project-info col-sm-6">';
         htmlToReturn += HTMLprojectTitle.replace('%#%', projects.projects[project].url).replace('%data%', projects.projects[project].title);
         htmlToReturn += HTMLprojectDates.replace('%data%', projects.projects[project].dates);
         htmlToReturn += HTMLprojectDescription.replace('%data%', projects.projects[project].description);
@@ -230,4 +230,11 @@ bio.display();
 work.display();
 projects.display();
 education.display();
-$('#mapDiv').append(googleMap);
+//$('#mapDiv').append(googleMap);
+
+///////////////
+//// Functions
+///////////////
+$(document).ready(function(){
+    console.log('hey');
+});
