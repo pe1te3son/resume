@@ -1,0 +1,40 @@
+.page-content
+  margin-top: 150px
+
+
+// .nav-icon
+//   margin-left: 300px
+//
+// #main
+//   margin-left: 300px
+
+.site-logo
+  margin: 50px 95px
+
+.icon-close
+  display: none
+.icon-open
+  display: block
+
+#main-navigation
+  display: block
+  background: $color1
+  color: $color4
+  width: 300px
+  min-height: 100vh
+  z-index: 1000
+  +position(fixed, 0 null null -300px)
+  text-align: center
+  overflow: hidden
+
+.nav-list
+  list-style: none
+  padding: 0
+  margin: 0
+  a
+    display: block
+    color: $color4
+    text-decoration: none
+    padding: 15px 0
+    &:hover
+      background: lighten($color1, 20%)

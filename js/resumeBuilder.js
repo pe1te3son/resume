@@ -235,6 +235,26 @@ education.display();
 ///////////////
 //// Functions
 ///////////////
+
+function mainNavigation(){
+  $('.icon-open').click(function(){
+    $('#main-navigation').animate({"left":0});
+    $(this).css("display", "none");
+    $('.icon-close').css("display", "block");
+    $('.nav-icon, #main').animate({"marginLeft": "300px"});
+    if($(window).width() < 600){
+      $('#bio-name').animate({"right": "-300"});
+    }
+  });
+
+  $('.icon-close').click(function(){
+    $('#main-navigation').animate({"left": '-=300'});
+    $(this).css("display", "none");
+    $('.icon-open').css("display", "block");
+    $('.nav-icon, #main').animate({"marginLeft": '-=300'});
+    $('#bio-name').animate({"right": 40});
+  });
+}
 $(document).ready(function(){
-    console.log('hey');
+    mainNavigation();
 });
