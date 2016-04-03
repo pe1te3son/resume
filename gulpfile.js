@@ -34,7 +34,7 @@ gulp.task('html', function(){
 gulp.task('sass', function () {
  return gulp.src(['./sass/**/*.scss', './sass/**/*.sass'])
   .pipe(sourcemaps.init())
-  .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+  .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
   .pipe(autoprefixer({
     browsers: ['last 3 versions'],
 		cascade: false

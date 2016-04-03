@@ -55,17 +55,27 @@ var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
 var HTMLonlineURL = '<br><a href="%#%">%data%</a>';
 
-var internationalizeButton = '<button>Internationalize</button>';
+var internationalizeButton = '<button class="interNationlize">Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
+//@param: a
+function inName(a){
+  var name = a.trim().split(" ");
+  name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
+  name[1] = name[1].toUpperCase();
+  return name[0] + " " + name[1];
+}
+
 $(document).ready(function() {
+  var name = $('#name').text()
   $('button').click(function() {
-    var iName = inName() || function(){};
+    var iName = inName(name) || function(){};
     $('#name').html(iName);
+
   });
 });
 
@@ -86,7 +96,12 @@ function logClicks(x,y) {
 
 $(document).click(function(loc) {
   // your code goes here!
+  var x = loc.pageX;
+  var y = loc.pageY;
+  logClicks(x, y);
+
 });
+
 
 
 
@@ -106,7 +121,154 @@ function initializeMap() {
   var locations;
 
   var mapOptions = {
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    styles: [
+      {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#2F6F9F"
+              },
+              {
+                  "saturation": 30
+              },
+              {
+                  "lightness": -20
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#ffffff"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#ffffff"
+              },
+              {
+                  "saturation": 0
+              },
+              {
+                  "lightness": 100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "geometry",
+          "stylers": [
+              {
+                  "hue": "#deecec"
+              },
+              {
+                  "saturation": -73
+              },
+              {
+                  "lightness": 72
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "road.highway",
+          "elementType": "labels",
+          "stylers": [
+              {
+                  "hue": "#bababa"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 25
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "landscape",
+          "elementType": "geometry",
+          "stylers": [
+              {
+                  "hue": "#e3e3e3"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 0
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
+              {
+                  "hue": "#ffffff"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 100
+              },
+              {
+                  "visibility": "simplified"
+              }
+          ]
+      },
+      {
+          "featureType": "administrative",
+          "elementType": "labels",
+          "stylers": [
+              {
+                  "hue": "#59cfff"
+              },
+              {
+                  "saturation": 100
+              },
+              {
+                  "lightness": 34
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      }
+    ]
+
   };
 
   /*
@@ -239,11 +401,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-// window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-// window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
- // map.fitBounds(mapBounds);
-// });
+ map.fitBounds(mapBounds);
+});

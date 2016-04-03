@@ -101,7 +101,7 @@ var projects = {
 };
 
 ///////////////
-//// Display functions
+//// Resume Display functions
 ///////////////
 
 //Bio display function
@@ -224,20 +224,12 @@ projects["display"] = function(){
 };
 
 ///////////////
-//// Resume builder
-///////////////
-bio.display();
-work.display();
-projects.display();
-education.display();
-//$('#mapDiv').append(googleMap);
-
-///////////////
 //// Functions
 ///////////////
 
+  //Off canvas menu
 function mainNavigation(){
-  //off canvas menu
+  //TODO: rethink the way its done, cut on selectors, improve reusability
   $('.icon-open').click(function(){
     $('#main-navigation').animate({"left":0});
     $(this).css("display", "none");
@@ -257,10 +249,38 @@ function mainNavigation(){
   });
 }
 
+//smoothly scrolls to anchors on the page
+//@param: duration
+function smoothScroll (duration) {
+	$('a[href^="#"]').on('click', function(event) {
+
+	    var target = $( $(this).attr('href') );
+      var scrollTo = (target.offset().top) - 200;
+
+	    if( target.length ) {
+	        event.preventDefault();
+	        $('html, body').animate({
+	            scrollTop: scrollTo
+	        }, duration);
+	    }
+	});
+}
+
+///////////////
+//// Resume builder
+///////////////
+bio.display();
+work.display();
+projects.display();
+education.display();
+$('#mapDiv').append(googleMap);
+$('#main-navigation').append(internationalizeButton);
 ///////////////
 //// Document ready
 ///////////////
-
 $(document).ready(function(){
+
     mainNavigation();
+    smoothScroll(1000);
+
 });
