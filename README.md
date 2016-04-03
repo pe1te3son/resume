@@ -1,2 +1,5 @@
 # Resume
-frontend-nanodegree-resume (in progress)
+Frontend-nanodegree-resume
+
+
+#### Project P3 at Udacity
