@@ -1,32 +1,37 @@
 .projects-section
-  margin-top: 80px
-  background: $color4
+  padding-bottom: 30px
+  margin: 50px 0
+  border: 1px solid $color4
+  border-top: 50px solid $color2
 
-.project-entry
-  margin-bottom: 40px
 
 .project-image
   background: $color4
+  padding: 5px
 
 .project-header
-  background: $color4
-  padding: 20px 50px
-
-.projects-heading
-  margin: 0
-  font-size: em(25px)
-
-.projects-slider
+  padding: 20px 30px
   text-align: center
-  font-size: em(30px)
   >i
+    display: inline-block
+    font-size: em(25px)
     margin: 0 5px
     color: $color2
     &:hover
       color: $color3
       cursor: pointer
 
+.projects-heading
+  display: inline-block
+  margin: 0
+  padding: 0 20px
+  font-size: em(30px)
+
+.projects-slider
+  text-align: left
+
 .p-counter
+  margin-top: 50px
   width: 100%
   text-align: center
 
@@ -35,7 +40,7 @@
   +size(15px)
   background: $color2
   margin-right: 5px
-  text-align: center
+  border-radius: 50%
 
 .p-piece-active
   background-color: $color3
