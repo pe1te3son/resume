@@ -1,14 +1,14 @@
 .header
   background: $color6
   border-bottom: 2px solid $color5
-  padding: 10px 0
   z-index: 100
   width: 100%
   height: 100px
   +position(fixed, 0 null null 0)
+  overflow: hidden
 
 #bio-name
-  +position(absolute, 0 40px null null)
+  +position(absolute, 0 30px null null)
   text-align: right
 
 #name
@@ -16,7 +16,7 @@
   margin: 5px 0
 
 .nav-icon
-  +position(absolute, 30px null null 35px)
+  +position(absolute, 30px null null 20px)
   display: inline-block
   font-size: 1.5em
   color: $color5

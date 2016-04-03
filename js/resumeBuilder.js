@@ -237,6 +237,7 @@ education.display();
 ///////////////
 
 function mainNavigation(){
+  //off canvas menu
   $('.icon-open').click(function(){
     $('#main-navigation').animate({"left":0});
     $(this).css("display", "none");
@@ -255,6 +256,11 @@ function mainNavigation(){
     $('#bio-name').animate({"right": 40});
   });
 }
+
+///////////////
+//// Document ready
+///////////////
+
 $(document).ready(function(){
     mainNavigation();
 });
