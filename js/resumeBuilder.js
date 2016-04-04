@@ -1,3 +1,4 @@
+'use strict';
 ///////////////
 //// Json
 ///////////////
@@ -10,14 +11,8 @@ var bio = {
   "contacts" : {
         "mobile" : "07475633636",
         "email" : "2010janak2010@gmail.com",
-        "github" : {
-          "username" : "pe1te3son",
-          "github_url" : "https://github.com/pe1te3son"
-        },
-        "twitter" : {
-          "username" : "@peter_janak",
-          "twitter_url" : "https://twitter.com/peter_janak"
-        },
+        "github" : "pe1te3son",
+        "twitter" : "@peter_janak",
         "location" : "London",
         "blog" : "https://github.com/pe1te3son"
       },
@@ -57,7 +52,7 @@ var education = {
       "name" : "Dopravna akademia Zilina",
       "location" : "Zilina, Slovakia",
       "degree" : "Graduated",
-      "majors" : "N/A",
+      "majors" : ["Enginering", "Science"],
       "dates" : "2001 - 2005",
       "url" : "https://doaza.edu.sk/"
     }
@@ -67,22 +62,22 @@ var education = {
       "title" : "Front end Web-developer",
       "school" : "Udacity",
       "date" : "2016 (in progress)",
-      "urlCourse" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001",
-      "url" : "https://www.udacity.com/"
+      "url" : "https://www.udacity.com/",
+      "urlCourse" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     },
     {
       "title" : "Front end Web-developer",
       "school" : "Treehouse",
       "date" : "2015",
-      "urlCourse" : "https://teamtreehouse.com/",
-      "url" : "https://teamtreehouse.com/"
+      "url" : "https://teamtreehouse.com/",
+      "urlCourse" : "https://teamtreehouse.com/"
     },
     {
       "title" : "Php, Wordpress Developer",
       "school" : "Treehouse",
       "date" : "2015 - (in progress)",
-      "urlCourse" : "https://teamtreehouse.com/",
-      "url" : "https://teamtreehouse.com/"
+      "url" : "https://teamtreehouse.com/",
+      "urlCourse" : "https://teamtreehouse.com/"
     }
   ]
 };
@@ -105,33 +100,33 @@ var projects = {
 ///////////////
 
 //Bio display function
-bio['display'] = function(){
-
+bio.display = function(){
+  var $skills = $('#skills');
   $('#bio-name').prepend(
-      HTMLheaderName.replace('%data%', bio.name)
-    , HTMLheaderRole.replace('%data%', bio.role)
+      HTMLheaderName.replace('%data%', bio.name),
+      HTMLheaderRole.replace('%data%', bio.role)
   );
 
   $('#topContacts, #footerContacts').append(
-      HTMLemail.replace('%link%', bio.contacts['email']).replace('%data%', bio.contacts['email'])
-    , HTMLmobile.replace('%link%', bio.contacts['mobile']).replace('%data%', bio.contacts['mobile'])
-    , HTMLtwitter.replace('%link%', bio.contacts.twitter['twitter_url']).replace('%data%', bio.contacts.twitter['username'])
-    , HTMLgithub.replace('%link%', bio.contacts.github['github_url']).replace('%data%', bio.contacts.github['username'])
-    , HTMLblog.replace('%link%', bio.contacts['blog'])
-    , HTMLlocation.replace('%data%', bio.contacts['location'])
+      HTMLemail.replace('%link%', bio.contacts['email']).replace('%data%', bio.contacts['email']),
+      HTMLmobile.replace('%link%', bio.contacts['mobile']).replace('%data%', bio.contacts['mobile']),
+      HTMLtwitter.replace('%link%', bio.contacts.twitter['twitter_url']).replace('%data%', bio.contacts.twitter['username']),
+      HTMLgithub.replace('%link%', bio.contacts.github['github_url']).replace('%data%', bio.contacts.github['username']),
+      HTMLblog.replace('%link%', bio.contacts['blog']),
+      HTMLlocation.replace('%data%', bio.contacts['location'])
   );
 
-  $('#skills').before(HTMLbioPic.replace('%data%', bio.biopic));
-  $('#skills').prepend(HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage));
+  $skills.before(HTMLbioPic.replace('%data%', bio.biopic));
+  $skills.prepend(HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage));
 
-  if(bio.skills.length > 0){
-    $('#skills').append(HTMLskillsStart);
+  if(bio.skills.length){
+    $skills.append(HTMLskillsStart);
     $('#skills-list').append(function(){
       //constructs skills html
       var htmlToReturn = "";
-      for(var skill in bio.skills){
-        htmlToReturn += HTMLskills.replace('%data%', bio.skills[skill]);
-      }//for loop ends
+      bio.skills.forEach(function(skill){
+        htmlToReturn += HTMLskills.replace('%data%', skill);
+      });//for loop ends
 
       return htmlToReturn;
     });
@@ -139,87 +134,88 @@ bio['display'] = function(){
 };
 
 //work display function
-work['display'] = function(){
-  if(work.jobs.length > 0){
-    for(var job in work.jobs){
+work.display = function(){
+  if(work.jobs.length){
+    work.jobs.forEach(function(job){
       $('#workExperience').append(HTMLworkStart);
       $('.work-entry:last').append(function(){
         var htmlToReturn = "";
-        htmlToReturn += HTMLworkEmployer.replace('%#%', work.jobs[job].url).replace('%data%', work.jobs[job].employer);
-        htmlToReturn += HTMLworkTitle.replace('%data%', work.jobs[job].title);
-        htmlToReturn += HTMLworkDates.replace('%data%', work.jobs[job].dates);
-        htmlToReturn += HTMLworkDescription.replace('%data%', work.jobs[job].description);
-        htmlToReturn += HTMLworkLocation.replace('%data%', work.jobs[job].location);
+        htmlToReturn += HTMLworkEmployer.replace('%#%', job.url).replace('%data%', job.employer);
+        htmlToReturn += HTMLworkTitle.replace('%data%', job.title);
+        htmlToReturn += HTMLworkDates.replace('%data%', job.dates);
+        htmlToReturn += HTMLworkDescription.replace('%data%', job.description);
+        htmlToReturn += HTMLworkLocation.replace('%data%', job.location);
         return htmlToReturn;
       });
-    }//for loop ends
+    });//for loop ends
   }//if statment ends
 };
 
 //education display function
-education["display"] = function(){
-  if(education.schools.length > 0){
+education.display = function(){
+  var $education = $('#education');
+  if(education.schools.length){
     //constructs education unit for schools
-    for(var school in education.schools){
-      $('#education').append(HTMLschoolStart);
+    education.schools.forEach(function(school){
+      $education.append(HTMLschoolStart);
       $('.education-entry:last').append(function(){
         var htmlToReturn = "";
-        htmlToReturn += HTMLschoolName.replace('%#%', education.schools[school].url).replace('%data%', education.schools[school].name);
-        htmlToReturn += HTMLschoolDegree.replace('%data%', education.schools[school].degree);
-        htmlToReturn += HTMLschoolDates.replace('%data%', education.schools[school].dates);
-        htmlToReturn += HTMLschoolLocation.replace('%data%', education.schools[school].location);
-        htmlToReturn += HTMLschoolMajor.replace('%data%', education.schools[school].majors);
+        htmlToReturn += HTMLschoolName.replace('%#%', school.url).replace('%data%', school.name);
+        htmlToReturn += HTMLschoolDegree.replace('%data%', school.degree);
+        htmlToReturn += HTMLschoolDates.replace('%data%', school.dates);
+        htmlToReturn += HTMLschoolLocation.replace('%data%', school.location);
+        htmlToReturn += HTMLschoolMajor.replace('%data%', school.majors);
         return htmlToReturn;
       });
-    }//for loop ends
+    });//for loop ends
   }//if ends
 
-  if(education.onlineCourses.length > 0){
+  if(education.onlineCourses.length){
     //constructs education unit for online courses
-    $('#education').append(HTMLonlineClasses);
-    for(var course in education.onlineCourses){
-      $('#education').append(HTMLschoolStart);
+    $education.append(HTMLonlineClasses);
+    education.onlineCourses.forEach(function(course){
+      $education.append(HTMLschoolStart);
       $('.education-entry:last').append(function(){
         var htmlToReturn = "";
-        htmlToReturn += HTMLonlineTitle.replace('%#%', education.onlineCourses[course].urlCourse).replace('%data%', education.onlineCourses[course].title);
-        htmlToReturn += HTMLonlineSchool.replace('%data%', education.onlineCourses[course].school);
-        htmlToReturn += HTMLonlineDates.replace('%data%', education.onlineCourses[course].date);
-        htmlToReturn += HTMLonlineURL.replace('%#%', education.onlineCourses[course].url).replace('%data%', education.onlineCourses[course].school);
+        htmlToReturn += HTMLonlineTitle.replace('%#%', course.urlCourse).replace('%data%', course.title);
+        htmlToReturn += HTMLonlineSchool.replace('%data%', course.school);
+        htmlToReturn += HTMLonlineDates.replace('%data%', course.date);
+        htmlToReturn += HTMLonlineURL.replace('%#%', course.url).replace('%data%', course.school);
         return htmlToReturn;
       });
-    }//for loop ends
+    });//for loop ends
   }//if ends
 };
 
 //projects display function
-projects["display"] = function(){
+projects.display = function(){
 
   //Returns built html for project`s images
   //@param: project
   function loopImages(project){
-    if(project.length > 0){
+    if(project.length){
       var htmlToReturn = "";
-      for(var image in project){
-        htmlToReturn += HTMLprojectImage.replace('%data%', project[image]);
-      }//for loop ends
+      project.forEach(function(image){
+        htmlToReturn += HTMLprojectImage.replace('%data%', image);
+      });//for loop ends
       return htmlToReturn;
     }//if ends
   }//loopImages ends
 
-  if(projects.projects.length > 0){
-    for(var project in projects.projects){
+  if(projects.projects.length){
+    projects.projects.forEach(function(project){
       $('#projects').append(HTMLprojectStart);
       $('.project-entry:last').append(function(){
         var htmlToReturn = "";
         htmlToReturn += '<div class="project-info col-sm-6">';
-        htmlToReturn += HTMLprojectTitle.replace('%#%', projects.projects[project].url).replace('%data%', projects.projects[project].title);
-        htmlToReturn += HTMLprojectDates.replace('%data%', projects.projects[project].dates);
-        htmlToReturn += HTMLprojectDescription.replace('%data%', projects.projects[project].description);
+        htmlToReturn += HTMLprojectTitle.replace('%#%', project.url).replace('%data%', project.title);
+        htmlToReturn += HTMLprojectDates.replace('%data%', project.dates);
+        htmlToReturn += HTMLprojectDescription.replace('%data%', project.description);
         htmlToReturn += '</div>';
-        htmlToReturn += loopImages(projects.projects[project].images);
+        htmlToReturn += loopImages(project.images);
         return htmlToReturn;
       });
-    }//for loop ends
+    });//for loop ends
   }//if ends
 };
 
@@ -275,6 +271,7 @@ projects.display();
 education.display();
 $('#mapDiv').append(googleMap);
 $('#main-navigation').append(internationalizeButton);
+
 ///////////////
 //// Document ready
 ///////////////
