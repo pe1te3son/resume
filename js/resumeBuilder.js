@@ -11,8 +11,14 @@ var bio = {
   "contacts" : {
         "mobile" : "07475633636",
         "email" : "2010janak2010@gmail.com",
-        "github" : "pe1te3son",
-        "twitter" : "@peter_janak",
+        "github" : {
+          "username" : "pe1te3son",
+          "github_url" : "https://github.com/pe1te3son"
+        },
+        "twitter" : {
+          "username" : "@peter_janak",
+          "twitter_url" : "https://twitter.com/peter_janak"
+        },
         "location" : "London",
         "blog" : "https://github.com/pe1te3son"
       },
