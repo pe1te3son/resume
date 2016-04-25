@@ -307,7 +307,6 @@ function initializeMap() {
     });
 
     return locations;
-    console.log('hey');
   }
 
   /*
